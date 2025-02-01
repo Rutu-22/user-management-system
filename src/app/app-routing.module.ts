@@ -6,7 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 
 
 export const routes: Routes = [ // Export the routes constant
-  { path: '', redirectTo: 'user-list', pathMatch: 'full' },
+  { path: '', redirectTo: 'add-user', pathMatch: 'full' },
   { path: 'add-user', component: AddUserComponent },
   { path: 'user-list', component: UserListComponent },
 ];

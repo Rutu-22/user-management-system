@@ -1,0 +1,53 @@
+<div class="user-list">
+
+  <!-- Search Bar -->
+  <div class="search">
+    <button (click)="addUser()">Add User</button>
+    <input
+      type="text"
+      [formControl]="searchControl"
+      placeholder="Search by name or email"
+    />
+  </div>
+    <!-- User Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of paginatedUsers; let i = index">
+          <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button class="edit-btn" (click)="onEdit(user)" >
+                <span class="material-icons">edit</span>
+              </button>
+              <button class="delete-btn" (click)="deleteUser(user)">
+                <span class="material-icons">delete</span>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  
+    <!-- No users available message -->
+    <div *ngIf="filteredUsers.length === 0">
+      <p>No users found. Please add users.</p>
+    </div>
+  </div>
+  

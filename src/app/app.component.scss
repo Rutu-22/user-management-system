@@ -1,0 +1,73 @@
+.sidebar {
+    position: fixed;
+    top: 4.3rem;
+    height: 100vh;
+    width: 12rem;
+    background: #4e73df;
+    color: #6d6e7e;
+    .navbar {
+      .navbar-brand {
+        padding: 0.5rem;
+        font-size: small;
+      }
+      .navbar-brand:hover {
+        background-color: #4e73;
+        color: #6d6e7e;
+      }
+    }
+  
+    ul.navigation {
+      list-style-type: none;
+      margin-top: 22px;
+      padding: 0;
+      li {
+        a {
+          font-size: 1em;
+          padding: 1rem 2rem 1rem 2.3rem;
+          color: white;
+          display: block;
+          text-decoration: none;
+          border-left: 3px solid transparent;
+          &:hover,
+          &.active {
+            background-color: rgba(0, 32, 74, 0.4);
+          }
+          &.active {
+            border-color: green;
+            svg {
+              fill: green;
+            }
+          }
+          fa-icon {
+            margin-right: 12px;
+            svg {
+              fill: white;
+              vertical-align: middle;
+              margin-top: -5px;
+            }
+          }
+          span {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transition: opacity 0.2s, visibility 0.2s;
+            transition: opacity 0.2s, visibility 0.2s;
+            -ms-transition: opacity 0.2s, visibility 0.2s;
+          }
+        }
+      }
+      .divider {
+        margin: 12px auto;
+      }
+    }
+  }
+  .toolbar {
+    background-color: #2c3e50;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: 28px;
+
+}

@@ -31,9 +31,12 @@
         <div class="input-icon">
           <input id="email" type="email" formControlName="email" placeholder="Enter email address" required />
         </div>
-        <div class="error-message" *ngIf="addUserForm.controls['email'].invalid && addUserForm.controls['email'].touched">
-          <small *ngIf="addUserForm.controls['email'].errors?.['required']">Email is required.</small>
-          <small *ngIf="addUserForm.controls['email'].errors?.['email']">Please enter a valid email.</small>
+        <div class="error-message" *ngIf="formControls['email'].invalid && formControls['email'].touched">
+          <small *ngIf="formControls['email'].errors?.['required']">Email is required.</small>
+          <small *ngIf="formControls['email'].errors?.['email']">Please enter a valid email.</small>
+
+          <small *ngIf="formControls['email'].errors?.['required']">Email is required.</small>
+          <small *ngIf="formControls['email'].errors?.['invalidEmail']">Please enter a valid email.</small>
         </div>
       </div>
     </fieldset>

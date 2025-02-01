@@ -1,76 +1,5 @@
+/* Modal Styles */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    width: 300px;
-  }
-  .modal-actions {
-    margin-top: 20px;
-  }
-  .modal-actions button {
-    margin: 5px;
-  }
-  .loading, .error, .success-message {
-    text-align: center;
-    margin: 20px 0;
-  }
-  .pagination-controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-/* Edit Button Styles */
-.edit-btn, .delete-btn {
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .edit-btn {
-    color: #007bff;
-     background: none;
-      border: none;
-      box-shadow: none;
-  }
-  
-  .edit-btn:hover {
-    background-color: #ddd;
-  }
-  
-  .delete-btn {
-    color: #e60000;
-    background: none;
-      border: none;
-      box-shadow: none;
-  }
-  
-  .delete-btn:hover {
-    background-color: #ddd;
-  }
-  
-  .edit-btn i {
-    margin-right: 5px;
-  }
-  
-  /* Modal Styles */
-  .modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -81,8 +10,8 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     z-index: 1000;
     width: 400px;
-    max-height: 80vh; 
-    overflow-y: auto; 
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
   .modal-content {
@@ -140,42 +69,54 @@
     font-size: 0.9rem;
     cursor: pointer;
   }
+  
   .close-btn {
     position: absolute;
     top: 10px;
-    left: 10px; 
+    left: 10px;
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    z-index: 10; 
+    z-index: 10;
   }
   
   .scrollable-content {
-    max-height: 300px; 
-    overflow-y: auto; 
+    max-height: 300px;
+    overflow-y: auto;
     position: relative;
   }
-  .heading{
+  
+  /* Edit/Delete Button Styles */
+  .edit-btn,
+  .delete-btn {
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
     display: flex;
-    justify-content: center;
-  }
-  .btn-primary {
-    background-color: #007bff;
-    color: #fff;
+    align-items: center;
+    background: none;
+    box-shadow: none;
   }
   
-  .btn-primary:hover {
-    background-color: #0056b3;
+  .edit-btn {
+    color: #007bff;
   }
   
-  .btn-secondary {
-    background-color: #6c757d;
-    color: #fff;
+  .edit-btn:hover,
+  .delete-btn:hover {
+    background-color: #ddd;
   }
   
-  .btn-secondary:hover {
-    background-color: #5a6268;
+  .delete-btn {
+    color: #e60000;
+  }
+  
+  .edit-btn i {
+    margin-right: 5px;
   }
   
   /* Table Styles */
@@ -186,18 +127,17 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 15px;
-    text-align: left;
-    font-weight: bold;
-  }
-  
+  th,
   td {
     padding: 12px 15px;
     border: 1px solid #ddd;
     text-align: left;
+  }
+  
+  th {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
   }
   
   tr:nth-child(even) {
@@ -213,49 +153,6 @@
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
-  }
-  
-  /* Toast Container */
-  .success-toast {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #4CAF50; /* Green background */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 200px;
-  }
-  
-  /* Success Message */
-  .success-message {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: 9999;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .success-message.ng-hide {
-    opacity: 0;
   }
   
   /* Pagination Controls */
@@ -286,80 +183,9 @@
     margin: 0 10px;
     font-size: 16px;
   }
-  .pagination-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px; 
-    gap: 10px; 
-    width: 950px;
-  }
   
-  .items-per-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto 20px auto;
-    width: fit-content;
-    margin-right: 10px;
-  
-  }
-  
-  
-  @media (max-width: 600px) {
-    .content {
-      margin-top: 100px; 
-    }
-  
-    .pagination-controls {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .items-per-page {
-      margin-top: 10px;
-    }
-  }
-  /* Edit Button Styles */
-.edit-btn, .delete-btn {
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .edit-btn {
-    color: #007bff;
-     background: none;
-      border: none;
-      box-shadow: none;
-  }
-  
-  .edit-btn:hover {
-    background-color: #ddd;
-  }
-  
-  .delete-btn {
-    color: #e60000;
-    background: none;
-      border: none;
-      box-shadow: none;
-  }
-  
-  .delete-btn:hover {
-    background-color: #ddd;
-  }
-  
-  .edit-btn i {
-    margin-right: 5px;
-  }
-
-   /* User List Container */
-   .user-list {
+  /* User List Container */
+  .user-list {
     margin-left: 300px;
     margin-right: 93px;
     margin-top: 38px;
@@ -415,5 +241,64 @@
     border: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+  }
+  
+  /* Success Message */
+  .success-message {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .success-message.ng-hide {
+    opacity: 0;
+  }
+  
+  /* Toast Container */
+  .success-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 600px) {
+    .content {
+      margin-top: 100px;
+    }
+  
+    .pagination-controls {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .items-per-page {
+      margin-top: 10px;
+    }
   }
   

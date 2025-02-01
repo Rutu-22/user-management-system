@@ -31,7 +31,9 @@ export class AddUserComponent {
       this.showModal = true;  
     }
   }
-
+  get formControls() {
+    return this.addUserForm.controls;
+  }
   onCancel(): void {
     this.addUserForm.reset();
   }

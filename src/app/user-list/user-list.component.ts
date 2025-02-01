@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 interface User {
@@ -13,7 +12,6 @@ interface User {
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
- 
 })
 export class UserListComponent implements OnInit {
   displayedColumns: string[] = ['serialNo', 'name', 'email', 'role', 'actions'];
@@ -25,26 +23,35 @@ export class UserListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 10;
   totalPages: number = 1;
-  editForm!: FormGroup;
+  editForm!: FormGroup; // <-- Initialize the form group
   selectedUser: User | null = null;
   isEditModalOpen: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.loadUsers();
     this.setupSearch();
+    this.initializeForm(); // <-- Ensure form initialization
+  }
+
+  // Initialize the form when the component is loaded
+  initializeForm(): void {
+    this.editForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      role: ['', Validators.required],
+    });
   }
 
   loadUsers(): void {
-    // Get users from localStorage (if available)
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
     this.filteredUsers = this.users;
     this.totalPages = Math.ceil(this.users.length / this.pageSize);
   }
 
   setupSearch(): void {
-    this.searchControl.valueChanges.subscribe((value) => {
+    this.searchControl.valueChanges.subscribe((value: any) => {
       this.applyFilter(value);
     });
   }
@@ -60,17 +67,39 @@ export class UserListComponent implements OnInit {
       );
     }
   }
-  
+
+  // Open the edit modal and pre-fill the form with user data
   onEdit(user: User): void {
     this.selectedUser = user;
     this.isEditModalOpen = true;
 
+    // Make sure the form is initialized before setting the values
     if (this.editForm) {
-      this.editForm.setValue({
+      this.editForm.patchValue({
         name: user.name,
         email: user.email,
         role: user.role,
       });
+    }
+  }
+
+  closeModal(): void {
+    this.isEditModalOpen = false;
+    this.selectedUser = null;
+  }
+
+  // Update user data and save changes
+  onUpdate(): void {
+    if (this.editForm.valid) {
+      const updatedUser = this.editForm.value;
+      const userIndex = this.users.findIndex(
+        (user) => user.email === this.selectedUser?.email
+      );
+      if (userIndex !== -1) {
+        this.users[userIndex] = updatedUser; // Update the user data
+        localStorage.setItem('users', JSON.stringify(this.users)); // Save updated users
+        this.closeModal(); // Close the modal after update
+      }
     }
   }
 
